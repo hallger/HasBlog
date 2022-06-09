@@ -1,5 +1,12 @@
 -- Output html to file
 
+-- type signatures
+html_ :: String -> String
+title_ :: String -> String
+body_ :: String -> String
+head_ :: String -> String
+makeHtml :: String -> String -> String
+
 main = putStrLn myHtml 
 
 html_ content = "<html>" <> content <> "</html>"
