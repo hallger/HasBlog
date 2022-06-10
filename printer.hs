@@ -4,17 +4,21 @@
 
 main = putStrLn myHtml 
 
-html_ :: String -> String
-html_ content = "<html>" <> content <> "</html>"
+el :: String -> String -> String
+el tag content = 
+    "<" <> tag ">" <> content <> "</" <> tag <> ">"
+
+html_ :: String -> String 
+html_ = el "html"
 
 title_ :: String -> String
-title_ content = "<html>" <> content <> "</title>"
+title_ = el "title"
 
 head_ :: String -> String
-head_ content = "<head>" <> content <> "</head>"
+head_ = el "title"
 
-body_ :: String -> String
-body_ content = "<body>" <> content <> "</body>"
+body_ :: String -> String 
+body_ = el "body" 
 
 myHtml = makeHtml "Title" "Content."
 
