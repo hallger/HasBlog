@@ -8,6 +8,12 @@ el :: String -> String -> String
 el tag content = 
     "<" <> tag ">" <> content <> "</" <> tag <> ">"
 
+p_ :: String -> String
+p_ = el "p"
+
+h1_ :: String -> String 
+h1_ = el "h1"
+
 html_ :: String -> String 
 html_ = el "html"
 
@@ -20,6 +26,7 @@ head_ = el "title"
 body_ :: String -> String 
 body_ = el "body" 
 
+myHtml :: String
 myHtml = makeHtml "Title" "Content."
 
 makeHtml :: String -> String -> String
