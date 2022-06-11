@@ -27,15 +27,22 @@ html_ title content =
         )
 
 myHtml :: Html
-myHtml = makeHtml "Title" "Content."
-
-makeHtml :: String -> String -> String
-makeHtml title content = html_ (head_ (title_ title) <> body_ content)
+myHtml = 
+     html_ 
+        "Title" 
+        ( append_   
+            (h1_ "heading" )
+            (append_ 
+                ( p_ "Here's some text")
+                ( p_ "Here's some more text")
+            )
+        )
 
 
 -- editing functions
 append_ :: Structure -> Structure -> Structure 
-append_ (Structure a) (Structure b) = Structure (a <> b)
+append_ c1 c2 =
+    Structure (getStructureString c1 <> getStructureString c2)
 
 getStructureString :: Structure -> Structure 
 getStructureString content = 
