@@ -5,7 +5,7 @@ newtype Structure = Structure String
 type Title = String
 
 main :: IO ()
-main = putStrLn myHtml
+main = putStrLn (render myHtml)
 
 el :: String -> String -> String
 el tag content = 
