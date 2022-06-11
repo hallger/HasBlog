@@ -42,6 +42,11 @@ p_ = Structure . el "p"
 append_ :: Structure -> Structure -> Structure 
 append_ (Structure a) (Structure b) = Structure (a <> b)
 
+getStructureString :: Structure -> Structure 
+getStructureString content = 
+    case content of 
+        Structure str -> str
+
 render :: Html -> String
 render html = 
     case html of
