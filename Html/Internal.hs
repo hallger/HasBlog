@@ -25,13 +25,13 @@ h1_ :: String -> Structure
 h1_ = Structure . el "h1" .escape
 
 ul_ :: [Structure] -> Structure
-ul_ = Structure . el "ul" . concat .map(el li_ . getStructureString)
+ul_ = Structure . el "ul" . concat .map(el "li" . getStructureString)
 
 ol_ :: [Structure] -> Structure
-ol_ = Structure . el "ol" .concat . map(el li_ .getStructureString)
+ol_ = Structure . el "ol" .concat . map(el "li" .getStructureString)
 
-li_ :: String -> Structure 
-li_ :: Structure . e1 "li" .escape
+-- li_ :: String -> Structure 
+-- li_ :: Structure . e1 "li" .escape
 
 append_ :: Structure -> Structure -> Structure 
 append_ c1 c2 =
