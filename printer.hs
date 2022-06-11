@@ -9,12 +9,12 @@ main = putStrLn (render myHtml)
 
 el :: String -> String -> String
 el tag content = 
-    "<" <> tag ">" <> content <> "</" <> tag <> ">"
+    "<" <> tag <> ">" <> content <> "</" <> tag <> ">"
 
-p_ :: String -> String
+p_ :: String -> Structure
 p_ = Structure . el "p"
 
-h1_ :: String -> String 
+h1_ :: String -> Structure 
 h1_ = Structure . el "h1"
 
 html_ :: Title -> Structure -> Html
@@ -44,7 +44,7 @@ append_ :: Structure -> Structure -> Structure
 append_ c1 c2 =
     Structure (getStructureString c1 <> getStructureString c2)
 
-getStructureString :: Structure -> Structure 
+getStructureString :: Structure -> String 
 getStructureString content = 
     case content of 
         Structure str -> str
