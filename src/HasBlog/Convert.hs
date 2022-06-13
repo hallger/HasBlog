@@ -1,7 +1,7 @@
-module Convert where
+module HasBlog.Convert where
 
-import qualified Markup
-import qualified Html
+import qualified HasBlog.Markup as Markup
+import qualified HasBlog.Html as Html
 
 convert :: Html.Title -> Markup.Document -> Html.Html
 convert title = Html.html_ title . foldMap convertStruct

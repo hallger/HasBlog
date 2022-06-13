@@ -1,4 +1,4 @@
-module Html.Internal where
+module HasBlog.Html.Internal where
 import Numeric.Natural
 
 -- Types

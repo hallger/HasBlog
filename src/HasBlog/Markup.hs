@@ -1,4 +1,4 @@
-module Markup
+module HasBlog.Markup
     ( Document
     , Structure(..)
     , parse

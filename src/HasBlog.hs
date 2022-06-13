@@ -1,10 +1,14 @@
-module Main where
+module HasBlog
+    ( main
+    , process
+    )
+    where
 
 import System.Directory (doesFileExist)
 import System.Environment (getArgs)
-import qualified Html
-import qualified Markup
-import Convert (convert)
+import qualified HasBlog.Html as Html
+import qualified HasBlog.Markup as Markup
+import HasBlog.Convert (convert)
 
 main :: IO ()
 main = do
