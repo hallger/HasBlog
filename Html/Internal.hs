@@ -7,7 +7,7 @@ newtype Html = Html String
 newtype Structure = Structure String
 type Title = String
 
--- Html tags
+--  EDSL 
 
 html_ :: Title -> Structure -> Html
 html_ title content = 
@@ -39,6 +39,13 @@ empty_ = Structure ""
 
 -- li_ :: String -> Structure 
 -- li_ :: Structure . e1 "li" .escape
+
+instance Semigroup Structure where
+    (<>) c1 c2 =
+        Structure (getStructureString c1 <> getStructureString c2)
+
+instance Monoid Structure where
+    mempty = Structure ""
 
 append_ :: Structure -> Structure -> Structure 
 append_ c1 c2 =
