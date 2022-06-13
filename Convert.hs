@@ -2,10 +2,9 @@ module Convert where
 
 import qualified Markup
 import qualified Html
-import Numeric.Natural
 
-h_ :: Natural -> String -> Structure
-h_ n = Structure . el ("h" <> show n) . escape
+convert :: Html.title -> Markup.Document -> Html.Html
+convert title = Html.html_ title . foldMap convertStruct
 
 convertStruct :: Markup.Structure -> Html.Structure
 convertStruct struct =
@@ -28,3 +27,11 @@ concatStruct :: list =
     case list of 
     [] -> empty_
     x : xs -> x <> concatStruct xs
+
+instance Monoid Structure where
+    mempty = empty_
+
+foldMap :: (Foldable t, Monoid m) -> (a -> m) -> t a -> m
+foldMap :: (Markup.Structure -> Html.Structure) 
+        -> [Markup.Structure]
+        -> Html.Structure

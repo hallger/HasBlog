@@ -1,4 +1,5 @@
 module Html.Internal where
+import Numeric.Natural
 
 -- Types
 
@@ -20,6 +21,9 @@ html_ title content =
 
 p_ :: String -> Structure
 p_ = Structure . el "p" . escape
+
+h_ :: Natural -> String -> Structure
+h_ n = Structure . el ("h" <> show n) . escape
 
 h1_ :: String -> Structure 
 h1_ = Structure . el "h1" .escape
