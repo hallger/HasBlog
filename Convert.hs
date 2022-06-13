@@ -3,7 +3,7 @@ module Convert where
 import qualified Markup
 import qualified Html
 
-convert :: Html.title -> Markup.Document -> Html.Html
+convert :: Html.Title -> Markup.Document -> Html.Html
 convert title = Html.html_ title . foldMap convertStruct
 
 convertStruct :: Markup.Structure -> Html.Structure
@@ -22,16 +22,16 @@ convertStruct struct =
             Html.ol_ $ map Html.p_ list
 
 
-concatStruct :: [Structure] -> Structure
-concatStruct :: list = 
-    case list of 
-    [] -> empty_
-    x : xs -> x <> concatStruct xs
-
-instance Monoid Structure where
-    mempty = empty_
-
-foldMap :: (Foldable t, Monoid m) -> (a -> m) -> t a -> m
-foldMap :: (Markup.Structure -> Html.Structure) 
-        -> [Markup.Structure]
-        -> Html.Structure
+-- concatStruct :: [Structure] -> Structure
+-- concatStruct :: list = 
+--     case list of 
+--     [] -> empty_
+--     x : xs -> x <> concatStruct xs
+-- 
+-- instance Monoid Structure where
+--     mempty = empty_
+-- 
+-- foldMap :: (Foldable t, Monoid m) -> (a -> m) -> t a -> m
+-- foldMap :: (Markup.Structure -> Html.Structure) 
+--         -> [Markup.Structure]
+--         -> Html.Structure

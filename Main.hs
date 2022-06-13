@@ -4,15 +4,18 @@ import System.Directory (doesFileExist)
 import System.Environment (getArgs)
 import qualified Html
 import qualified Markup
+import Convert (convert)
 
 main :: IO ()
 main = 
-    getArgs >>= \args
+    getArgs >>= \args ->
         case args of 
+            -- No arguments given
             [] -> 
                 getContents >>= \content -> 
                     putStrLn (process "Empty" content)
 
+            -- IO file paths given as args
             [input, output] -> 
                 readFile input >>= \content -> 
                     doesFileExist output >>= \exists -> 
@@ -23,8 +26,8 @@ main =
                                 then whenIO confirm writeResult
                                 else writeResult
 
-                        _ -> 
-                            putStrLn "Usage: runghc Main.hs [-- <input-file> <output-file>]"
+            _ -> 
+                putStrLn "Usage: runghc Main.hs [-- <input-file> <output-file>]"
 
 process :: Html.Title -> String -> String
 process title = Html.render . convert title . Markup.parse
