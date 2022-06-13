@@ -31,7 +31,7 @@ library
 
     default-language: Haskell2010
 
-executable HasBlog
+executable bloggen
     import: common-settings
     main-is:          Main.hs
 
