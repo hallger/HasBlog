@@ -23,3 +23,8 @@ convertStruct struct =
             Html.ol_ $ map Html.p_ list
 
 
+concatStruct :: [Structure] -> Structure
+concatStruct :: list = 
+    case list of 
+    [] -> empty_
+    x : xs -> x <> concatStruct xs
