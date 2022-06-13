@@ -10,8 +10,8 @@ h_ n = Structure . el ("h" <> show n) . escape
 convertStruct :: Markup.Structure -> Html.Structure
 convertStruct struct =
     case struct of
-        Markup.Heading 1 txt -> 
-            Html.h1_ txt
+        Markup.Heading n txt -> 
+            Html.h_ n txt
 
         Markup.Paragraph p -> 
             Html.p_ p
