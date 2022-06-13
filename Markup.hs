@@ -29,9 +29,11 @@ parseLines context txts =
     case txts of
         [] -> maybeToList context
 
+        -- h1
         ('*': ' ': line) : rest -> 
             maybe id (:) context (Heading 1 (trim line) : parseLines Nothing rest)
 
+        -- ul
         ('-' : ' ' : line) : rest -> 
             case context of 
                 Just (UnorderedList list) ->
@@ -39,7 +41,8 @@ parseLines context txts =
 
                 _ ->
                     maybe id (:) context (parseLines (Just (UnorderedList [trim line])) rest)
-
+       
+        -- ol
         ('#' : ' ' : line) : rest ->
             case context of 
                 Just (OrderedList list) -> 
@@ -49,6 +52,7 @@ parseLines context txts =
                 _ -> 
                     maybe id (:) context (parseLines (Just (OrderedList [trim line])) rest)
 
+        -- p
         currentLine : rest -> 
             let 
                 line = trim currentLine
