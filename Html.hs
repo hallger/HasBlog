@@ -4,6 +4,7 @@ module Html
     , Structure
     , html_ 
     , p_
+    , h_
     , h1_
     , ol_
     , ul_
