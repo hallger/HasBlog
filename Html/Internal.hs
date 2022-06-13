@@ -30,6 +30,9 @@ ul_ = Structure . el "ul" . concat .map(el "li" . getStructureString)
 ol_ :: [Structure] -> Structure
 ol_ = Structure . el "ol" .concat . map(el "li" .getStructureString)
 
+empty_ :: Structure
+empty_ = Structure ""
+
 -- li_ :: String -> Structure 
 -- li_ :: Structure . e1 "li" .escape
 
