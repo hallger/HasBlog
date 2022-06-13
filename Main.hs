@@ -5,7 +5,6 @@ import System.Environment (getArgs)
 import qualified Html
 import qualified Markup
 
-
 process :: Html.Title -> String -> String
 process title = Html.render . convert title . Markup.parse
 
@@ -18,5 +17,13 @@ confirm =
                 "n" -> pure False
                 _   -> putStrLn "Invalid response." *>
                     confirm
+
+
+whenIO :: IO Bool -> IO () -> IO ()
+whenIO cond action = 
+    cond >>= \result -> 
+        if result 
+            then action
+            else pure()
 
 
