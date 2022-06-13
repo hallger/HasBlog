@@ -5,6 +5,27 @@ import System.Environment (getArgs)
 import qualified Html
 import qualified Markup
 
+main :: IO ()
+main = 
+    getArgs >>= \args
+        case args of 
+            [] -> 
+                getContents >>= \content -> 
+                    putStrLn (process "Empty" content)
+
+            [input, output] -> 
+                readFile input >>= \content -> 
+                    doesFileExist output >>= \exists -> 
+                        let 
+                            writeResult = writeFile output (process input content)
+                        in 
+                            if exists 
+                                then whenIO confirm writeResult
+                                else writeResult
+
+                        _ -> 
+                            putStrLn "Usage: runghc Main.hs [-- <input-file> <output-file>]"
+
 process :: Html.Title -> String -> String
 process title = Html.render . convert title . Markup.parse
 
