@@ -1,21 +1,20 @@
 cabal-version:      2.4
 name:               HasBlog
 version:            0.1.0.0
-
-name: HasBlog 
-version: 0.1.0.0
-synopsis: Blog Generator 
-homepage: https://github.com/urxt/HasBlog
-bug-reports: https://github.com/urxt/HasBlog/issues
+synopsis:           Blog Generator 
+homepage:           https://github.com/urxt/HasBlog
+bug-reports:        https://github.com/urxt/HasBlog/issues
 author:             urxt
 maintainer:         80124020+urxt@users.noreply.github.com
 category:           Learning, Web
+extra-source-files: CHANGELOG.md
 extra-doc-files: 
     README.md
--- A copyright notice.
--- copyright:
--- category:
-extra-source-files: CHANGELOG.md
+
+common common-settings
+    default-language: Haskell2010
+    ghc-options: 
+        -Wall
 
 library
     exposed-modules:  MyLib
