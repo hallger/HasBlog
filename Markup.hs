@@ -6,6 +6,7 @@ module Markup
 where
 
 import Numeric.Natural
+import Data.Maybe (maybeToList)
 
 type Document 
     = [Structure]
