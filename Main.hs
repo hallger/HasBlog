@@ -13,7 +13,7 @@ main = do
         -- No arguments given
         [] -> do
             content <- getContents
-                putStrLn (process "Empty" content)
+            putStrLn (process "Empty" content)
 
         -- IO file paths given as args
         [input, output] -> do
