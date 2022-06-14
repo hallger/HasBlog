@@ -70,7 +70,7 @@ pConvertSingle =
 
 
 -- parser for single input
-pSingleInput :: Parse SingleInput 
+pSingleInput :: Parser SingleInput 
 pSingleInput = 
     fromMaybe Stdin <$> optional pInputFile
 
