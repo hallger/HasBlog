@@ -11,7 +11,7 @@ import HasBlog.Convert (convert)
 
 import System.IO
 
-convertSingle :: Html.Title -> Handle -> Handle -> IO() 
+convertSingle :: Html.Title -> Handle -> Handle -> IO () 
 convertSingle title input output = do
     content <- hGetContents input
     hPutStrLn output (process title content)

@@ -79,7 +79,7 @@ pSingleOutput :: Parser SingleOutput
 pSingleOutput =
     fromMaybe Stdout <$> optional pOutputFile
 
-pInputFile :: Parser SingleINput
+pInputFile :: Parser SingleInput
 pInputFile = fmap InputFile parser 
     where
         parser = 
@@ -105,7 +105,7 @@ pOutputFile = OutputFile <$> parser
 -- dir conversion parser
 pConvertDir :: Parser Options 
 pConvertDir = 
-    ConvertDir <$> pInputDir <$> pOutputDir
+    ConvertDir <$> pInputDir <*> pOutputDir
 
 -- parser for input dir
 pInputDir :: Parser FilePath
