@@ -11,21 +11,25 @@ module OptParse
 import Data.Maybe (fromMaybe)
 import Options.Applicative 
 
+-- model
 data Options
     = ConvertSingle SingleInput SingleOutput 
     | ConvertDir FilePath FilePath 
     deriving Show
 
+-- single input source
 data SingleInput 
     = Stdin
     | InputFile FilePath
     deriving Show
 
+-- single output sink
 data SingleOutput 
     = Stdout 
     | OutputFile FilePath
     deriving Show
 
+-- parse command line opts
 parse :: IO Options 
 parse = execParser opts 
 
@@ -37,6 +41,7 @@ opts =
         <> progDesc "Convert markup to html" 
     )
 
+-- parser for all options
 pOptions :: Parser Options 
 pOptions = 
     subparser 
@@ -58,19 +63,23 @@ pOptions =
 
 
 
+-- parser for single source to sink option
 pConvertSingle :: Parser Options 
 pConvertSingle = 
     ConvertSingle <$> pSingleInput <*> pSingleOutput
 
 
+-- parser for single input
 pSingleInput :: Parse SingleInput 
 pSingleInput = 
     fromMaybe Stdin <$> optional pInputFile
 
+-- input file parser
 pSingleOutput :: Parser SingleOutput 
 pSingleOutput =
     fromMaybe Stdout <$> optional pOutputFile
 
+-- output file parser
 pOutputFile :: Parser SingleOutput 
 pOutputFile = OutputFile <$> parser 
     where 
@@ -82,11 +91,12 @@ pOutputFile = OutputFile <$> parser
                     <> help "Output file" 
                 )
 
+-- dir conversion parser
 pConvertDir :: Parser Options 
 pConvertDir = 
     ConvertDir <$> pInputDir <$> pOutputDir
 
-
+-- parser for input dir
 pInputDir :: Parser FilePath
 pInputDir = 
     strOption 
@@ -96,6 +106,7 @@ pInputDir =
       <> help "Input Dir"
     )
 
+-- parser for output dir
 pOutputDir :: Parser FilePath
 pOutputDir = 
     strOption 
