@@ -5,6 +5,7 @@ import OptParse
 
 import System.Exit (exitFailure) 
 import System.Directory (doesFileExist)
+import System.IO
 
 
 main :: IO ()

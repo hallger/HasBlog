@@ -74,10 +74,21 @@ pSingleInput :: Parser SingleInput
 pSingleInput = 
     fromMaybe Stdin <$> optional pInputFile
 
--- input file parser
+--  parser for single output
 pSingleOutput :: Parser SingleOutput 
 pSingleOutput =
     fromMaybe Stdout <$> optional pOutputFile
+
+pInputFile :: Parser SingleINput
+pInputFile = fmap InputFile parser 
+    where
+        parser = 
+            strOption
+                ( long "input" 
+                  <> short 'i' 
+                  <> metavar "FILE" 
+                  <> help "Input File" 
+                )
 
 -- output file parser
 pOutputFile :: Parser SingleOutput 
