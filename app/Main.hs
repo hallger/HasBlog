@@ -11,36 +11,37 @@ import System.IO
 main :: IO ()
 main = do 
     options <- parse 
-    case options of 
-        ConvertDir input output -> 
+    case options of
+        ConvertDir input output ->
             HasBlog.convertDirectory input output 
 
         ConvertSingle input output -> do
             (title, inputHandle) <- 
                 case input of 
-                    Stdin ->
-                      pure ("", stdin) 
+                    Stdin -> 
+                        pure ("", stdin)
                     InputFile file ->
-                      (,) file <$> openFile file ReadMode
-              
+                        (,) file <$> openFile file ReadMode
+
             outputHandle <- 
                 case output of 
                     Stdout -> pure stdout 
                     OutputFile file -> do
-                        exists <- doesFileExist file 
+                        exists <- doesFileExist file
                         shouldOpenFile <- 
                             if exists 
                                 then confirm 
-                                else pure True 
-                        if shouldOpenFile 
-                            then 
-                                openFile file WriteMode 
-                            else 
-                                exitFailure 
+                                else pure True
+                        if shouldOpenFile
+                            then
+                                openFile file WriteMode
+                            else
+                                exitFailure
 
-                HasBlog.convertSingle title inputHandle outputHandle 
-                hClose inputHandle 
-                hClose outputHandle 
+
+            HasBlog.convertSingle title inputHandle outputHandle 
+            hClose inputHandle 
+            hClose outputHandle 
 
 
 confirm :: IO Bool
