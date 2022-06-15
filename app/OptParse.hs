@@ -37,8 +37,8 @@ opts :: ParserInfo Options
 opts = 
     info (pOptions <**> helper) 
     (   fullDesc
-        <> header "HasBlog - Static Site Generator" 
-        <> progDesc "Convert markup to html" 
+        <> header "HasBlog - A Static Site Generator" 
+        <> progDesc "Convert markup files or directories to html" 
     )
 
 -- parser for all options
