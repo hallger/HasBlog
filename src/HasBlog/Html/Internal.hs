@@ -47,6 +47,10 @@ img_ :: FilePath -> Content
 img_ path = 
     Content $ "<img src=\"" escape path <> "\">"
 
+b_ :: Content -> Content
+b_ content = 
+    Content $ el "b" (getContentString content)
+
 i_ :: Content -> Content
 i_ content = 
     Content $ el "i" (getContentString content)

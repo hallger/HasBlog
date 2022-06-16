@@ -7,6 +7,12 @@ module HasBlog.Html
     , h_
     , ol_
     , ul_
+    , Content
+    , txt_ 
+    , img_ 
+    , link_ 
+    , i_
+    , b_
     , append_
     , render
     )
