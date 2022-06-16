@@ -35,6 +35,22 @@ ol_ = Structure . el "ol" .concat . map(el "li" .getStructureString)
 txt_ :: String -> Content
 txt_ = Content . escape
 
+link_ :: FilePath -> Content -> Content
+link_ path content =
+        Content $
+            elAttr
+                "a" 
+                ("href=\"" <> escape path <> "\"")
+                (getContentString content)
+
+img_ :: FilePath -> Content
+img_ path = 
+    Content $ "<img src=\"" escape path <> "\">"
+
+i_ :: Content -> Content
+i_ content = 
+    Content $ el "i" (getContentString content)
+
 empty_ :: Structure
 empty_ = Structure ""
 
@@ -61,6 +77,10 @@ render html =
 el :: String -> String -> String
 el tag content = 
     "<" <> tag <> ">" <> content <> "</" <> tag <> ">" 
+
+elAttr :: String -> String -> String -> String
+elAttr tag attrs content = 
+        "<" <> tag <> " " <> attrs <> ">" <> content <> "</" <> tag <> ">"
 
 getStructureString :: Structure -> String 
 getStructureString content = 
