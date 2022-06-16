@@ -37,9 +37,6 @@ ol_ = Structure . el "ol" .concat . map(el "li" .getStructureString)
 empty_ :: Structure
 empty_ = Structure ""
 
--- li_ :: String -> Structure 
--- li_ :: Structure . e1 "li" .escape
-
 instance Semigroup Structure where
     (<>) c1 c2 =
         Structure (getStructureString c1 <> getStructureString c2)
@@ -47,11 +44,12 @@ instance Semigroup Structure where
 instance Monoid Structure where
     mempty = Structure ""
 
+-- append
 append_ :: Structure -> Structure -> Structure 
 append_ c1 c2 =
     Structure (getStructureString c1 <> getStructureString c2) 
 
-
+-- render 
 render :: Html -> String
 render html = 
     case html of
