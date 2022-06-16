@@ -61,7 +61,8 @@ pOptions =
             )
         )
 
-
+--------------------------------------------
+-- Single source to sink conversion parser
 
 -- parser for single source to sink option
 pConvertSingle :: Parser Options 

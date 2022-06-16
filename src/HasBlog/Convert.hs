@@ -20,18 +20,3 @@ convertStruct struct =
 
         Markup.OrderedList list -> 
             Html.ol_ $ map Html.p_ list
-
-
--- concatStruct :: [Structure] -> Structure
--- concatStruct :: list = 
---     case list of 
---     [] -> empty_
---     x : xs -> x <> concatStruct xs
--- 
--- instance Monoid Structure where
---     mempty = empty_
--- 
--- foldMap :: (Foldable t, Monoid m) -> (a -> m) -> t a -> m
--- foldMap :: (Markup.Structure -> Html.Structure) 
---         -> [Markup.Structure]
---         -> Html.Structure
