@@ -5,6 +5,7 @@ import Numeric.Natural
 
 newtype Html = Html String
 newtype Structure = Structure String
+newtype Content = Content String
 type Title = String
 
 --  EDSL 
@@ -19,11 +20,11 @@ html_ title content =
         )   
 
 
-p_ :: String -> Structure
-p_ = Structure . el "p" . escape
+p_ :: Content -> Structure
+p_ = Structure . el "p" . getContentString
 
-h_ :: Natural -> String -> Structure
-h_ n = Structure . el ("h" <> show n) . escape
+h_ :: Natural -> Content -> Structure
+h_ n = Structure . el ("h" <> show n) . getContentString
 
 h1_ :: String -> Structure 
 h1_ = Structure . el "h1" .escape
