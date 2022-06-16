@@ -26,9 +26,6 @@ p_ = Structure . el "p" . getContentString
 h_ :: Natural -> Content -> Structure
 h_ n = Structure . el ("h" <> show n) . getContentString
 
-h1_ :: String -> Structure 
-h1_ = Structure . el "h1" .escape
-
 ul_ :: [Structure] -> Structure
 ul_ = Structure . el "ul" . concat .map(el "li" . getStructureString)
 
