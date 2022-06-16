@@ -66,6 +66,11 @@ getStructureString content =
     case content of  
         Structure str -> str 
 
+getContentString :: Content -> String
+getContentString content =
+    case content of 
+        Content str -> str
+
 escape:: String -> String
 escape =        
     let 
