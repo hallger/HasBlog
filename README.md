@@ -11,6 +11,7 @@
 ** Once installed **
 
     - `cabal v2-build && cabal v2-clean`
+    - `cabal v2-run bloggen` to run executable
         
 
 
