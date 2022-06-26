@@ -12,6 +12,7 @@
 
     - `cabal v2-build && cabal v2-clean`
     - `cabal v2-run bloggen` to run executable
+    - `cabal v2-clean to clean cachefiles`
         
 
 
